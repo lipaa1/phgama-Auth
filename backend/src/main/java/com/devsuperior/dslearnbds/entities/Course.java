@@ -1,18 +1,15 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,12 +25,10 @@ public class Course  implements Serializable {
 	private String imgGrayUri;
 	
 	
-	@ManyToMany (fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_course_offer",
-		joinColumns = @JoinColumn(name = "course_id"),
-		inverseJoinColumns = @JoinColumn(name = "offer_id"))
-	public Set<Offer> offers = new HashSet<>();
+	@OneToMany(mappedBy = "course")
+	private List<Offer> offers = new ArrayList<>();
 	
+		
 	public Course() {
 		
 	}
@@ -85,6 +80,12 @@ public class Course  implements Serializable {
 
 	public void setImgGrayUri(String imgGrayUri) {
 		this.imgGrayUri = imgGrayUri;
+	}
+
+
+	
+	public List<Offer> getOffers() {
+		return offers;
 	}
 
 

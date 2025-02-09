@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -28,7 +30,9 @@ public class Offer implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant endMoment;
 
-	
+	@ManyToOne
+	@JoinColumn(name = "course_id")
+	private Course course;
 	
 	
 	public Offer() {
@@ -36,12 +40,13 @@ public class Offer implements Serializable {
 	}
 
 
-	public Offer(Long id, String edition, Instant startMoment, Instant endMoment) {
+	public Offer(Long id, String edition, Instant startMoment, Instant endMoment,Course course) {
 		super();
 		this.id = id;
 		this.edition = edition;
 		this.startMoment = startMoment;
 		this.endMoment = endMoment;
+		this.course = course;
 	}
 
 
@@ -82,6 +87,17 @@ public class Offer implements Serializable {
 
 	public void setEndMoment(Instant endMoment) {
 		this.endMoment = endMoment;
+	}
+
+
+	
+	public Course getCourse() {
+		return course;
+	}
+
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 
