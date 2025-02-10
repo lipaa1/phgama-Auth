@@ -1,6 +1,6 @@
 package com.devsuperior.dslearnbds.entities;
 
-import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_section")
-public class Section  implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Section {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +32,7 @@ public class Section  implements Serializable {
 	
 	public Section() {
 	}
-	
-	
+
 	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
 			Section prerequisite) {
 		super();
@@ -46,7 +44,6 @@ public class Section  implements Serializable {
 		this.resource = resource;
 		this.prerequisite = prerequisite;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -103,7 +100,21 @@ public class Section  implements Serializable {
 	public void setPrerequisite(Section prerequisite) {
 		this.prerequisite = prerequisite;
 	}
-	
-	
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Section other = (Section) obj;
+		return Objects.equals(id, other.id);
+	}
 }

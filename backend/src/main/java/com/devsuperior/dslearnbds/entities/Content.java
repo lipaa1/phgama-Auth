@@ -3,23 +3,20 @@ package com.devsuperior.dslearnbds.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "tb_content")
 public class Content extends Lesson {
-	private static final long serialVersionUID = 1L;
-	
+
 	private String textContent;
-	private String videoURI;
+	private String videoUri;
 	
 	public Content() {
-		
 	}
 
-	public Content(Long id, String title, Integer position, Section section, String textContent, String videoURI) {
+	public Content(Long id, String title, Integer position, Section section, String textContent, String videoUri) {
 		super(id, title, position, section);
 		this.textContent = textContent;
-		this.videoURI = videoURI;
+		this.videoUri = videoUri;
 	}
 
 	public String getTextContent() {
@@ -30,13 +27,11 @@ public class Content extends Lesson {
 		this.textContent = textContent;
 	}
 
-	public String getVideoURI() {
-		return videoURI;
+	public String getVideoUri() {
+		return videoUri;
 	}
 
-	public void setVideoURI(String videoURI) {
-		this.videoURI = videoURI;
+	public void setVideoUri(String videoUri) {
+		this.videoUri = videoUri;
 	}
-	
-	
 }
