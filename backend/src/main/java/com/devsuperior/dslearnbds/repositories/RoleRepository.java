@@ -1,5 +1,9 @@
 package com.devsuperior.dslearnbds.repositories;
 
-public class RoleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.devsuperior.dslearnbds.entities.Role;
+
+public interface RoleRepository extends JpaRepository<Role, Long>{
 
 }
