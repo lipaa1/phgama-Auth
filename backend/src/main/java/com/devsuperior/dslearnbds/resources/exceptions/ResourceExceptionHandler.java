@@ -62,4 +62,4 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 	}
 }
-}
+
